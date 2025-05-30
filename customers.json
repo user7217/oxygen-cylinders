@@ -1,0 +1,14 @@
+[
+    {
+        "id": "CUST001",
+        "name": "Alice Johnson",
+        "phone": "123-456-7890",
+        "address": "123 Maple St, Springfield"
+    },
+    {
+        "id": "CUST002",
+        "name": "Bob Smith",
+        "phone": "987-654-3210",
+        "address": "456 Oak Ave, Shelbyville"
+    }
+]

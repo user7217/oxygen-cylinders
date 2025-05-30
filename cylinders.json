@@ -1,0 +1,20 @@
+[
+    {
+        "id": "CYL001",
+        "location": "Factory",
+        "status": "In factory",
+        "customer_id": null
+    },
+    {
+        "id": "CYL002",
+        "location": "Customer Address",
+        "status": "With customer",
+        "customer_id": "CUST001"
+    },
+    {
+        "id": "CYL003",
+        "location": "Customer Address",
+        "status": "With customer",
+        "customer_id": "CUST002"
+    }
+]

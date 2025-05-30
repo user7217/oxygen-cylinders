@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oxygen Cylinder Tracker</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+</head>
+<body>
+    <h1>Oxygen Cylinder Tracker</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li><strong>{{ category.title() }}:</strong> {{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <p>
+        <a href="{{ url_for('add_customer') }}">Add New Customer</a> | 
+        <a href="{{ url_for('add_cylinder') }}">Add New Cylinder</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Customer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cylinder in cylinders %}
+            <tr>
+                <td>{{ cylinder.id }}</td>
+                <td>{{ cylinder.location }}</td>
+                <td>{{ cylinder.status }}</td>
+                <td>
+                    {% if cylinder.customer_id and cylinder.customer_id in customers %}
+                        {{ customers[cylinder.customer_id].name }} ({{ cylinder.customer_id }})
+                    {% else %}
+                        Unassigned
+                    {% endif %}
+                </td>
+                <td><a href="{{ url_for('update_cylinder', cylinder_id=cylinder.id) }}">Update</a></td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5">No cylinders found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
